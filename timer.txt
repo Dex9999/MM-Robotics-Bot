@@ -1,0 +1,486 @@
+// const { ButtonBuilder } = require("@discordjs/builders");
+// const {
+//   SlashCommandBuilder,
+//   ButtonStyle,
+//   ActionRowBuilder,
+// } = require("discord.js");
+// const { Collection } = require("discord.js");
+
+// module.exports = {
+//   data: new SlashCommandBuilder()
+//     .setName("timer")
+//     .setDescription("Lets you time your solves (alpha)"),
+
+//   async execute(interaction) {
+//     const go = new ButtonBuilder()
+//       .setCustomId("go")
+//       .setLabel("~")
+//       .setStyle(ButtonStyle.Primary);
+
+//     const row = new ActionRowBuilder().addComponents(go);
+
+//     await interaction.reply({
+//       content: `Timer`,
+//       components: [row],
+//     });
+//   },
+// };
+
+// // {
+// //   "content": "",
+// //   "components": [
+// //     {
+// //       "type": 1,
+// //       "components": [
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_0_button_0`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_0_button_1`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_0_button_2`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_0_button_3`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_0_button_4`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_0_button_5`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_0_button_6`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_0_button_7`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_0_button_8`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_0_button_9`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_0_button_10`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_0_button_11`,
+// //           "disabled": false,
+// //           "type": 2
+// //         }
+// //       ]
+// //     },
+// //     {
+// //       "type": 1,
+// //       "components": [
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_1_button_0`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_1_button_1`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_1_button_2`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_1_button_3`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_1_button_4`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_1_button_5`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_1_button_6`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_1_button_7`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_1_button_8`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_1_button_9`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_1_button_10`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_1_button_11`,
+// //           "disabled": false,
+// //           "type": 2
+// //         }
+// //       ]
+// //     },
+// //     {
+// //       "type": 1,
+// //       "components": [
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_2_button_0`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_2_button_1`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_2_button_2`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_2_button_3`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_2_button_4`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_2_button_5`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_2_button_6`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_2_button_7`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_2_button_8`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_2_button_9`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_2_button_10`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_2_button_11`,
+// //           "disabled": false,
+// //           "type": 2
+// //         }
+// //       ]
+// //     },
+// //     {
+// //       "type": 1,
+// //       "components": [
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_3_button_0`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_3_button_1`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_3_button_2`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_3_button_3`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_3_button_4`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_3_button_5`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_3_button_6`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_3_button_7`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_3_button_8`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_3_button_9`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_3_button_10`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_3_button_11`,
+// //           "disabled": false,
+// //           "type": 2
+// //         }
+// //       ]
+// //     },
+// //     {
+// //       "type": 1,
+// //       "components": [
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_4_button_0`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_4_button_1`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_4_button_2`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_4_button_3`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_4_button_4`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_4_button_5`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_4_button_6`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_4_button_7`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_4_button_8`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_4_button_9`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_4_button_10`,
+// //           "disabled": false,
+// //           "type": 2
+// //         },
+// //         {
+// //           "style": 1,
+// //           "label": `~`,
+// //           "custom_id": `row_4_button_11`,
+// //           "disabled": false,
+// //           "type": 2
+// //         }
+// //       ]
+// //     }
+// //   ],
+// //   "embeds": [
+// //     {
+// //       "type": "rich",
+// //       "title": `Timer`,
+// //       "description": "",
+// //       "color": 0xc642dd
+// //     }
+// //   ]
+// // }
