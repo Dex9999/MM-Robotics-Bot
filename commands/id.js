@@ -15,7 +15,7 @@ module.exports = {
     .addStringOption((option) =>
       option
         .setName("wca_id")
-        .setDescription("The id of the person")
+        .setDescription("The id of the person (can also be a search query eg. 'max park')")
         .setRequired(true)
     ),
 
@@ -36,10 +36,60 @@ module.exports = {
       var e = res.data;
     }
     if (e) {
+      const centiToMSC = n => {
+        const padWithZero = n => n.toString().padStart(2, 0);
+        const centiseconds = n % 100;
+        n = (n - centiseconds) / 100;
+        const seconds = n % 60;
+        const minutes = (n - seconds) / 60;
+        return `${minutes}:${padWithZero(seconds)}.${padWithZero(centiseconds)}`;
+      };
+
+      function expandName(str) {
+        if(str == '333mbf') return '3x3 Multi-Blind'
+        if(str == '333fm') return '3x3 Fewest Moves'
+        if(str == '333oh') return '3x3 One-Handed'
+        if(str == '333ft') return '3x3 With Feet'
+        if(str == '444bf') return '4x4 Multi-Blind'
+        if(str == '555bf') return '5x5 Multi-Blind'
+        if(str == '333') return '3x3'
+        if(str == '222') return '2x2'
+        if(str == '444') return '4x4'
+        if(str == '555') return '5x5'
+        if(str == '666') return '6x6'
+        if(str == '777') return '7x7'
+        if(str == 'pyram') return 'Pyraminx'
+        if(str == 'minx') return 'Megaminx'
+        if(str == 'sq1') return 'Square-1'
+        if(str == 'clock') return 'Clock'
+        if(str == 'skewb') return 'Skewb'
+      }
+       
+      var arr = []
+      for(let i = 0; i < Object.keys(e.personal_records).length; i++){
+       //a json where the events can just not be there so can't use array options
+        var itemId = Object.keys(e.personal_records)[i]
+        var item = e.personal_records[itemId]
+        var event = itemId
+        var single = 'single: '+centiToMSC(item.single.best)
+        if(item.average != null){
+        var avg = 'average: '+centiToMSC(item.average.best)
+        var rankAvg = item.average.world_rank
+        } else {
+          var avg = null
+          //last place for 3x3 single x 10
+          var rankAvg = 1832000
+        }
+        console.log(event, single, avg, rankAvg)
+        arr.push({event, single, avg, rankAvg})
+      }
+      arr.sort((a, b) => a.rankAvg - b.rankAvg);
+      mainEvent = ' - '+expandName(arr[0].event)+' Main (WR'+arr[0].rankAvg+')'
+
       const embed = new EmbedBuilder()
         .setTitle(e.person.name)
         .setURL(`https://www.worldcubeassociation.org/persons/${e.person.id}`)
-        .setDescription("`" + e.person.id + "`")
+        .setDescription("	\n`"+e.person.id+mainEvent+"`")
         .addFields(
           {
             name: "Country: ",
