@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 const fs = require("node:fs");
 const path = require("node:path");
+const clientId = process.env['clientId']
+const guildId = process.env['guildId']
 
 const commands = [];
 const commandsPath = path.join(__dirname, "commands");
@@ -32,8 +34,8 @@ const rest = new REST().setToken(process.env.token);
 
     const data = await rest.put(
       Routes.applicationGuildCommands(
-        process.env.clientId,
-        process.env.guildId
+        clientId,
+        guildId
       ),
       { body: commands }
     );

@@ -2,6 +2,8 @@ const fs = require("node:fs");
 const path = require("node:path");
 const dotenv = require("dotenv");
 const axios = require("axios");
+const token = process.env['token']
+const TBA = process.env['TBA']
 
 dotenv.config();
 const { Client, Collection, Events, GatewayIntentBits } = require("discord.js");
@@ -67,8 +69,8 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 client.on(Events.MessageCreate, async (message) => {
-  if (message.content == "!comps") {
-    message.reply("Kill Yourself");
+  if (message.content.startsWith == "!team") {
+    
   }
 });
 
