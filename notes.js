@@ -1,3 +1,6 @@
+//https://some-random-api.com/canvas/nobitches?no=NO%20BLUE%20BANNERS
+
+
 // https://www.thebluealliance.com/apidocs/v3
 //https://frc-events.firstinspires.org/services/API
 
