@@ -2,6 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const dotenv = require("dotenv");
 const axios = require("axios");
+const roboticsCmd = require("./roboticsCmds");
 
 dotenv.config();
 const { Client, Collection, Events, GatewayIntentBits } = require("discord.js");
@@ -66,31 +67,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 
-//auth key has to be Auth='WHATEVERTHEKEYIS'
-let config = {
-  method: 'get',
-  maxBodyLength: Infinity,
-  headers: { 
-    'X-TBA-Auth-Key': process.env.TBA
-  }
-};
-
 client.on(Events.MessageCreate, async (message) => {
-  if (message.content.startsWith("!team")) {
-    args = message.content.split(" ");
-    console.log(args.length)
-    if(args.length == 2){
-      var blueres = await axios.request(`https://www.thebluealliance.com/api/v3/team/frc${args[1]}`,config)
-      .catch((error) => {
-        console.log(error);
-      });
-      
-      
-      console.log(blueres.data)
-      message.channel.send(`Team ${args[1]} is ${blueres.data.nickname} from ${blueres.data.city}, ${blueres.data.state_prov}, ${blueres.data.country}`);
-      message.reply('idiot')
-      // statsres = await axios.get(`https://www.thebluealliance.com/api/v3/team/frc${args[1]}`);
-    }
+  if (message.content.startsWith("!")) {
+    roboticsCmd(message)
   }
 });
 
