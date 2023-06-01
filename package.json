@@ -4,7 +4,8 @@
   "description": "cool bot",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon ind.js",
+    "test": "nodemon .",
+    "start": "node updateslash.js && nodemon .",
     "update": "node updateslash.js",
     "up": "node updateslash.js",
     "dev": "nodemon ."
