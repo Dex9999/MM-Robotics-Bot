@@ -1,5 +1,5 @@
-const fs = require("node:fs");
-const path = require("node:path");
+const fs = require("fs");
+const path = require("path");
 const dotenv = require("dotenv");
 const axios = require("axios");
 const roboticsCmd = require("./roboticsCmds");
@@ -30,8 +30,7 @@ for (const file of commandFiles) {
     client.commands.set(command.data.name, command);
   } else {
     console.log(
-      `[WARNING] urmom is ${filePath} and missing da needed "data" shit
-       or "execute" property.`
+      `[WARNING] urmom is ${filePath} and missing da needed "data" shit or "execute" property.`
     );
   }
 }
