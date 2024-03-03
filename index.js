@@ -66,10 +66,5 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 
-client.on(Events.MessageCreate, async (message) => {
-  if (message.content.startsWith("!")) {
-    roboticsCmd(message)
-  }
-});
 
 client.login(process.env.token);
