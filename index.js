@@ -12,7 +12,7 @@ const client = new Client({
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
-    GatewayIntentBits.GuildMembers,
+    // GatewayIntentBits.GuildMembers,
   ],
 });
 
@@ -33,7 +33,7 @@ for (const file of commandFiles) {
       `[WARNING] urmom is ${filePath} and missing da needed "data" shit or "execute" property.`
     );
   }
-}
+} 
 // When the client is ready, run this code (only once)
 client.once(Events.ClientReady, (c) => {
   console.log(`Ready! Logged in as ${c.user.tag}`);
